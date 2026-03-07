@@ -41,8 +41,8 @@ export const CheckoutPage: React.FC = () => {
 
       // Step 3: Open Razorpay checkout popup
       const options = {
-        key: RAZORPAY_KEY_ID,
-        amount: totalPrice * 100, // amount in paise
+        key: paymentData.razorpay_key_id || RAZORPAY_KEY_ID,
+        amount: paymentData.amount || totalPrice * 100, // amount in paise
         currency: 'INR',
         name: 'DineQuick Premium',
         description: `Order #${orderData.id}`,

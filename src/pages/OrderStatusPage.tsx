@@ -66,7 +66,7 @@ export const OrderStatusPage: React.FC = () => {
         <div className="relative">
           {/* Vertical Line */}
           <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-black/5" />
-          
+
           <div className="space-y-10">
             {STATUS_STEPS.map((step, index) => {
               const isCompleted = index < currentStepIndex;
@@ -75,14 +75,13 @@ export const OrderStatusPage: React.FC = () => {
 
               return (
                 <div key={step.status} className="flex gap-6 relative">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center z-10 transition-all duration-500 ${
-                    isCompleted ? 'bg-accent text-white' : 
-                    isActive ? 'bg-primary text-white shadow-lg shadow-primary/30 scale-110' : 
-                    'bg-white text-secondary/20 border border-black/5'
-                  }`}>
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center z-10 transition-all duration-500 ${isCompleted ? 'bg-accent text-white' :
+                      isActive ? 'bg-primary text-white shadow-lg shadow-primary/30 scale-110' :
+                        'bg-white text-secondary/20 border border-black/5'
+                    }`}>
                     <Icon className="w-6 h-6" />
                   </div>
-                  
+
                   <div className="flex-grow pt-1">
                     <h3 className={`font-bold text-lg ${isActive ? 'text-secondary' : 'text-secondary/40'}`}>
                       {step.label}
@@ -90,7 +89,7 @@ export const OrderStatusPage: React.FC = () => {
                     <p className={`text-sm mt-1 leading-relaxed ${isActive ? 'text-secondary/60' : 'text-secondary/20'}`}>
                       {step.description}
                     </p>
-                    
+
                     {isActive && (
                       <motion.div
                         initial={{ width: 0 }}
@@ -123,7 +122,7 @@ export const OrderStatusPage: React.FC = () => {
       <div className="fixed bottom-0 left-0 right-0 p-6 bg-white border-t border-black/5 z-30">
         <motion.button
           whileTap={{ scale: 0.95 }}
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/table/5')}
           className="w-full bg-secondary text-white py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-2"
         >
           <Home className="w-5 h-5" />

@@ -51,7 +51,7 @@ export const ProductPage: React.FC = () => {
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-background" />
-        
+
         <button
           onClick={() => navigate(-1)}
           className="absolute top-6 left-6 p-3 bg-white/20 backdrop-blur-md rounded-2xl text-white border border-white/20"
@@ -71,7 +71,7 @@ export const ProductPage: React.FC = () => {
               <span className="text-secondary font-bold text-sm">{product.rating}</span>
             </div>
           </div>
-          
+
           <h1 className="text-3xl font-black mb-2">{product.name}</h1>
           <p className="text-secondary/60 leading-relaxed mb-8">
             {product.description}
@@ -103,7 +103,7 @@ export const ProductPage: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             onClick={() => {
               for (let i = 0; i < quantity; i++) addToCart(product);
-              navigate('/');
+              navigate(-1);
             }}
             className="w-full bg-primary text-white py-5 rounded-2xl font-bold text-xl shadow-2xl shadow-primary/30 flex items-center justify-center gap-3"
           >
