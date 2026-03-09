@@ -34,15 +34,20 @@ export const CheckoutPage: React.FC = () => {
       });
 
       // Extract numeric order ID from "ORD1" format
-      const numericOrderId = parseInt(orderData.id.replace('ORD', ''), 10);
+      const rawId = String(orderData.id).replace(/^ORD/i, '');
+      const numericOrderId = parseInt(rawId, 10);
+
+      if (isNaN(numericOrderId)) {
+        throw new Error('Invalid order ID received from server');
+      }
 
       // Step 2: Create a Razorpay order via our backend
       const { data: paymentData } = await api.createPaymentOrder(numericOrderId);
 
       // Step 3: Open Razorpay checkout popup
       const options = {
-        key: RAZORPAY_KEY_ID,
-        amount: totalPrice * 100, // amount in paise
+        key: (paymentData as any).razorpay_key_id || RAZORPAY_KEY_ID,
+        amount: (paymentData as any).amount || totalPrice * 100, // amount in paise from backend
         currency: 'INR',
         name: 'DineQuick Premium',
         description: `Order #${orderData.id}`,

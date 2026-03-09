@@ -11,6 +11,19 @@ interface CategoryBarProps {
 export const CategoryBar: React.FC<CategoryBarProps> = ({ categories, selectedCategory, onSelect }) => {
   return (
     <div className="flex gap-3 overflow-x-auto py-4 px-4 no-scrollbar sticky top-16 bg-background z-10">
+      {/* "All" category button */}
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        onClick={() => onSelect('all')}
+        className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-all ${
+          selectedCategory === 'all'
+            ? 'bg-primary text-white shadow-lg shadow-primary/20'
+            : 'bg-white text-secondary/60 border border-black/5'
+        }`}
+      >
+        <span className="text-lg">🍽️</span>
+        <span className="font-medium text-sm">All</span>
+      </motion.button>
       {categories.map((category) => (
         <motion.button
           key={category.id}

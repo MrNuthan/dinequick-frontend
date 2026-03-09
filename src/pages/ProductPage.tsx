@@ -20,7 +20,7 @@ export const ProductPage: React.FC = () => {
       setIsLoading(true);
       try {
         const { data } = await api.getProducts();
-        const found = data.find(p => p.id === productId);
+        const found = data.find(p => String(p.id) === productId);
         if (found) setProduct(found);
       } catch (error) {
         console.error('Error fetching product:', error);
